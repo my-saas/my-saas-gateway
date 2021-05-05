@@ -1,0 +1,16 @@
+server:
+  port: 9999
+#打印日志
+logging:
+  level:
+    com:
+      stef: debug
+# 监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
