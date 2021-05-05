@@ -1,5 +1,27 @@
 server:
   port: 9999
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: ssm
+          uri: lb://my-saas-ssm
+          predicates:
+            - Path=/ssm/**
+          filters:
+            - StripPrefix=1
+        - id: oa
+          uri: lb://my-saas-oa
+          predicates:
+            - Path=/oa/**
+          filters:
+            - StripPrefix=1
+        - id: crm
+          uri: lb://my-saas-crm
+          predicates:
+            - Path=/crm/**
+          filters:
+            - StripPrefix=1
 #打印日志
 logging:
   level:
@@ -14,3 +36,4 @@ management:
   endpoint:
     health:
       show-details: always
+
